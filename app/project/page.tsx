@@ -15,12 +15,36 @@ interface Project {
   metrics: { label: string; value: string }[];
   description: string;
   features: string[];
-  videoUrl?: string; // Add your Google Drive direct stream proxy link here
+  videoUrl?: string; 
   links: { label: string; url: string }[];
 }
 
 export default function ProjectsMatrix() {
   const projects: Project[] = [
+    {
+      id: "sector-guard",
+      title: "Sector Guard",
+      tagline: "AI-Powered Expense Reimbursement Auditing Platform",
+      status: "ACTIVE",
+      tech: ["Next.js", "TypeScript", "Groq API", "Prisma", "Neon (Postgres)", "TailwindCSS"],
+      metrics: [
+        { label: "AUDIT LAYER", value: "Rule-Based Fraud Core" },
+        { label: "INFERENCE ENGINE", value: "GROQ - Qwen 3.6 27B" },
+      ],
+      description: "Designed a comprehensive platform for expense auditing, where employees upload receipts, a hosted LLM does the extraction of structured data, and the fraud detection engine determines whether policies were violated before payment is made.",
+      features: [
+        "Vision LLM extracts structured receipt data, persisted via Prisma into Postgres, then run through fraudCore.ts for tier-limit checks, split-receipt detection within a 3hr same-merchant window, and temporal conflict analysis.",
+        "Every expense receives a risk score and an APPROVED / FLAGGED / DENIED status, with employee trust ratings auto-adjusted based on audit history.",
+        "Employee CRUD with cascade delete, locked MonthlyPayout records broken down by category (TRAVEL / FOOD / STAY / OTHER), and an AuditReasonModal for reviewing and reopening flagged decisions.",
+        "Scope of the audit trail: No auth layer, cascade delete over audit trail preservation, and rule-based (not ML) fraud detection — specifically chosen for explainability in an auditing context.",
+      ],
+      
+      videoUrl: "https://drive.google.com/file/d/1Pbul_tVUaozk6Cb10z0YaRcZJOy0dHi2/preview",
+      links: [
+        { label: "REPOSITORY_SRC", url: "https://github.com/CoderKanha47/sector-guard" },
+        { label: "WORKING_LINK", url: "https://sector-guard.vercel.app/" }
+      ]
+    },
     {
       id: "silent-cartographer",
       title: "The Silent Cartographer",
@@ -37,8 +61,8 @@ export default function ProjectsMatrix() {
         "Developed robust cross-referencing engines for automatic detection of data mismatches and compliance issues within distinct documentation paths.",
         "Created a glassmorphic interface to represent logistics data trees in a visual form.",
       ],
-      // For Google Drive video streaming: Use the link format https://drive.google.com/uc?export=download&id=YOUR_FILE_ID
-      videoUrl: "", 
+      
+      videoUrl: "https://drive.google.com/file/d/1Rtab7_L69nrHyldszQFVoiFYHdfW6X62/preview", 
       links: [
         { label: "REPOSITORY_SRC", url: "https://github.com/CoderKanha47/silent-cartographer" },
         { label: "WORKING_LINK", url: "https://silent-cartographer-79t7j7989-coderkanha47s-projects.vercel.app/dashboard" }
@@ -121,7 +145,7 @@ export default function ProjectsMatrix() {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className={`w-1.5 h-1.5 rounded-full ${project.status === "PRODUCTION" ? "bg-emerald-400 animate-pulse" : "bg-cyan-400"}`} />
+                      <span className={`w-1.5 h-1.5 rounded-full ${project.status === "ACTIVE" ? "bg-emerald-400 animate-pulse" : "bg-cyan-400"}`} />
                       <span className="font-mono text-[9px] tracking-widest text-white/40">
                         {project.status}
                       </span>
@@ -227,11 +251,11 @@ export default function ProjectsMatrix() {
                           className="w-full h-full min-h-64 rounded-xl border border-white/10 bg-black/60 overflow-hidden relative flex items-center justify-center aspect-video shadow-inner"
                         >
                           {selectedProject.videoUrl ? (
-                            <video 
-                              src={selectedProject.videoUrl} 
-                              controls 
-                              className="w-full h-full object-cover"
-                              poster="/api/placeholder/400/225"
+                            <iframe
+                              src={selectedProject.videoUrl}
+                              className="w-full h-full"
+                              allow="autoplay"
+                              allowFullScreen
                             />
                           ) : (
                             <div className="text-center p-6 space-y-2">

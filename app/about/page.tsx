@@ -322,9 +322,9 @@ export default function AboutMe() {
                     duration: 0.18,
                     ease: "easeOut",
                   }}
-                  className={`flex flex-col rounded-2xl border bg-zinc-950/90 backdrop-blur-2xl overflow-hidden transition-all duration-150 shadow-[0_15px_40px_rgba(0,0,0,.45)] ${isExpanded
+                  className={`flex flex-col rounded-2xl border bg-zinc-950/90 backdrop-blur-2xl overflow-hidden transition-all duration-150 ${isExpanded
                     ? "border-white/50 shadow-[0_0_50px_rgba(255,255,255,0.15)] md:col-span-2 h-auto"
-                    : "border-white/10 hover:border-white/30 min-h-55"
+                    : "border-white/25 shadow-[0_0_25px_rgba(255,255,255,0.06),inset_0_0_20px_rgba(255,255,255,0.02)] hover:border-white/50 hover:shadow-[0_0_45px_rgba(255,255,255,0.14),inset_0_0_25px_rgba(255,255,255,0.04)] min-h-55"
                     }`}
                 >
                   {/* TRIGGER HEADER AREA */}

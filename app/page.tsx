@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 // Create a motion-enabled Next.js Link component to keep smooth transitions
 const MotionLink = motion.create(Link);
@@ -98,9 +99,9 @@ export default function HomeLanding() {
   };
 
   const menuItems = [
-    { title: "About me", path: "/about" },
-    { title: "Projects", path: "/project" },
-    { title: "GitHub", path: "https://github.com/CoderKanha47", external: true }
+    { title: "About me", desc: "Background & skills", path: "/about" },
+    { title: "Projects", desc: "Things I've shipped", path: "/project" },
+    { title: "GitHub", desc: "Source & commits", path: "https://github.com/CoderKanha47", external: true }
   ];
 
   return (
@@ -127,50 +128,67 @@ export default function HomeLanding() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className="z-10 text-center mb-16 space-y-3 pointer-events-none max-w-2xl"
+        className="z-10 text-center mb-16 space-y-4 pointer-events-none max-w-2xl"
       >
+        <span className="block font-mono text-[11px] tracking-[0.35em] text-white/40 uppercase">
+          Kanha // Product Engineer
+        </span>
         <h1 className="text-4xl md:text-5xl font-extralight tracking-tight text-white leading-tight">
-          Hi !<br /> I am a Product Engineer, <span className="font-normal text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">Welcome to my</span> Portfolio.
+          I build AI-native tools that turn
+          <br className="hidden md:block" />{" "}
+          <span className="font-normal text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">
+            manual work into automated systems.
+          </span>
         </h1>
+        <p className="text-sm md:text-base text-white/40 font-light pt-1">
+          Final-year CS engineer · Next.js, TypeScript, AI-assisted architecture
+        </p>
       </motion.div>
 
       {/* HORIZONTAL GLASS BLOCK ROW */}
       <div className="z-10 flex flex-col md:flex-row items-stretch justify-center gap-6 w-full max-w-5xl">
-  {menuItems.map((item, idx) => (
-    <MotionLink
-      key={idx}
-      href={item.path}
-      target={item.external ? "_blank" : undefined}
-      rel={item.external ? "noopener noreferrer" : undefined}
-      onMouseEnter={() => setHoveredIndex(idx)}
-      onMouseLeave={() => setHoveredIndex(null)}
-      initial={{ opacity: 0, scale: 0.97 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{
-        delay: idx * 0.05,
-        duration: 0.3,
-        ease: "easeOut"
-      }}
-      whileHover={{
-        scale: 1.05,
-        transition: { duration: 0.15, ease: "linear" }
-      }}
+        {menuItems.map((item, idx) => (
+          <MotionLink
+            key={idx}
+            href={item.path}
+            target={item.external ? "_blank" : undefined}
+            rel={item.external ? "noopener noreferrer" : undefined}
+            onMouseEnter={() => setHoveredIndex(idx)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              delay: idx * 0.05,
+              duration: 0.3,
+              ease: "easeOut"
+            }}
+            whileHover={{
+              scale: 1.05,
+              transition: { duration: 0.15, ease: "linear" }
+            }}
+            className="flex-1 min-h-44 max-md:min-h-56 flex flex-col items-start justify-between p-8 rounded-2xl border border-white/25 bg-white/4 relative group cursor-pointer transition-all duration-300 ease-out hover:border-white/60 hover:bg-white/[0.07] shadow-[0_0_25px_rgba(255,255,255,0.06),inset_0_0_20px_rgba(255,255,255,0.02)] hover:shadow-[0_0_45px_rgba(255,255,255,0.14),inset_0_0_25px_rgba(255,255,255,0.04)]"
+          >
+            {/* RE-ARCHITECTED RADIAL LIGHT ILLUMINATION */}
+            <div className="absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-      className="flex-1 min-h-35 max-md:min-h-50 flex items-center justify-center p-8 rounded-xl border border-white/10 bg-transparent relative group cursor-pointer shadow-lg transition-all duration-300 ease-out hover:border-white/30"
-    >
-      {/* BACKGROUND MATTE LAYER: Keeps the card distinct without destroying background elements */}
-      <div className="absolute inset-0 rounded-xl bg-white/2 group-hover:bg-white/5 transition-colors duration-300 pointer-events-none" />
+            {/* TOP ROW: TITLE + ARROW */}
+            <div className="w-full flex items-center justify-between z-10">
+              <span className="text-xl md:text-2xl font-light tracking-wide text-white/90 group-hover:text-white group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-200 font-sans">
+                {item.title}
+              </span>
+              <ArrowUpRight
+                size={20}
+                className="text-white/50 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
+              />
+            </div>
 
-      {/* RE-ARCHITECTED RADIAL LIGHT ILLUMINATION */}
-      <div className="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-      {/* TEXT ELEMENT */}
-      <span className="text-lg md:text-xl font-light tracking-wide text-white/50 group-hover:text-white group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-200 font-sans z-10">
-        {item.title}
-      </span>
-    </MotionLink>
-  ))}
-</div>
+            {/* SUPPORTING LABEL */}
+            <span className="text-xs font-mono tracking-wide text-white/35 group-hover:text-white/60 transition-colors duration-200 z-10">
+              {item.desc}
+            </span>
+          </MotionLink>
+        ))}
+      </div>
 
       {/* SYSTEM TELEMETRY */}
       <div className="absolute bottom-6 left-6 font-mono text-[10px] text-white/15 tracking-widest hidden sm:block">
