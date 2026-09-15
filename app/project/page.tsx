@@ -86,6 +86,7 @@ export default function ProjectsMatrix() {
         "Webhook triggers exposed as real HTTP endpoints that route JSON request bodies straight into workflows, plus condition true/false branching where never-taken branches don't block merges.",
         "Secrets stored as Fernet-encrypted blobs, own-workflow-only access enforced at the service layer, parameterized DB operations only, and a 25-case pytest suite covering the engine and API.",
       ],
+      videoUrl: "https://drive.google.com/file/d/1U5K9U8RbRsjMKUa7xMV671ztWuSuf_H5/preview", 
       links: [
         { label: "REPOSITORY_SRC", url: "https://github.com/CoderKanha47/FLOW" },
         { label: "WORKING_LINK", url: "https://flow-three-pi.vercel.app" }
