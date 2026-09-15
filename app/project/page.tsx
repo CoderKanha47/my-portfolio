@@ -67,6 +67,29 @@ export default function ProjectsMatrix() {
         { label: "REPOSITORY_SRC", url: "https://github.com/CoderKanha47/silent-cartographer" },
         { label: "WORKING_LINK", url: "https://silent-cartographer-79t7j7989-coderkanha47s-projects.vercel.app/dashboard" }
       ]
+    },
+    {
+      id: "flow",
+      title: "FLOW",
+      tagline: "Visual Workflow & Automation Builder",
+      status: "PRODUCTION",
+      tech: ["Next.js", "React Flow", "TypeScript", "FastAPI", "SQLAlchemy", "TailwindCSS"],
+      metrics: [
+        { label: "CANVAS ENGINE", value: "React Flow Graph Editor" },
+        { label: "EXECUTION ENGINE", value: "Async AST Evaluator" },
+        { label: "TRIGGERS", value: "Manual / Webhook / Schedule" },
+      ],
+      description: "Built a full-stack visual workflow automation platform where users compose triggers, logic, data/API integrations, and AI nodes on an interactive canvas and execute them end-to-end through a FastAPI-based asynchronous execution engine.",
+      features: [
+        "Interactive React Flow canvas backed by a node registry that auto-generates config panels from backend node-type metadata — add, connect, branch and run workflows in real time.",
+        "Safe AST-based expression language ({{...}} interpolation, comparisons, and/or/not, attribute access) — Python eval is never used, so no arbitrary user code executes in the process.",
+        "Webhook triggers exposed as real HTTP endpoints that route JSON request bodies straight into workflows, plus condition true/false branching where never-taken branches don't block merges.",
+        "Secrets stored as Fernet-encrypted blobs, own-workflow-only access enforced at the service layer, parameterized DB operations only, and a 25-case pytest suite covering the engine and API.",
+      ],
+      links: [
+        { label: "REPOSITORY_SRC", url: "https://github.com/CoderKanha47/FLOW" },
+        { label: "WORKING_LINK", url: "https://flow-three-pi.vercel.app" }
+      ]
     }
   ];
 
